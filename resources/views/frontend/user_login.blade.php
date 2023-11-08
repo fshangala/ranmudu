@@ -19,10 +19,9 @@
 								<div>
 									<div class="d-flex justify-content-between align-items-start">
 										<label class="form-label" for="email">{{ translate('Email / Phone') }}</label>
-										<button class="btn btn-link p-0 opacity-50 text-reset fs-12" type="button" onclick="toggleEmailPhone(this)" site-login-type="{{ app('request')->input('login-type') }}">{{ app('request')->input('login-type') == 'email' ? translate('Use Phone Instead') : translate('Use Email Instead') }}</button>
+										<button class="btn btn-link p-0 opacity-50 text-reset fs-12" type="button" onclick="toggleEmailPhone(this)">{{ translate('Use Email Instead') }}</button>
 									</div>
-                                    @if( app('request')->input('login-type') == 'email' )
-							        <div class="form-group email-form-group mb-1">
+							        <div class="form-group email-form-group mb-1 d-none">
 							            <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{  translate('Email') }}" name="email"  autocomplete="off">
 							            @if ($errors->has('email'))
 							                <span class="invalid-feedback" role="alert">
@@ -30,7 +29,6 @@
 							                </span>
 							            @endif
 							        </div>
-                                    @else
 									<div class="form-group phone-form-group mb-1">
 							            <input type="number" id="phone-code" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" value="{{ old('phone') }}" placeholder="" name="email" autocomplete="off">
                                         @if ($errors->has('phone'))
@@ -40,7 +38,6 @@
 							            @endif
 							        </div>																
 							        <input type="hidden" name="country_code" value="">
-                                    @endif
 
 							    </div>
 							@else

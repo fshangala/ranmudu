@@ -47,12 +47,7 @@
     });
 
     function toggleEmailPhone(el) {
-        if(el.getAttribute('site-login-type') == 'email'){
-            window.location.assign('?login-type=phone');
-        } else {
-            window.location.assign('?login-type=email');
-        }
-        /*if (isPhoneShown) {
+        if (isPhoneShown) {
             $('.phone-form-group').addClass('d-none');
             $('.email-form-group').removeClass('d-none');
             isPhoneShown = false;
@@ -62,6 +57,6 @@
             $('.email-form-group').addClass('d-none');
             isPhoneShown = true;
             $(el).html('{{ translate('Use Email Instead') }}');
-        }*/
+        }
     }
 </script>

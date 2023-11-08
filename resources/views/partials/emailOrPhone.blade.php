@@ -50,11 +50,15 @@
         if (isPhoneShown) {
             $('.phone-form-group').addClass('d-none');
             $('.email-form-group').removeClass('d-none');
+            document.querySelector(".phone-form-group input").setAttribute('name','email-none');
+            document.querySelector(".email-form-group input").setAttribute('name','email');
             isPhoneShown = false;
             $(el).html('{{ translate('Use Phone Instead') }}');
         } else {
             $('.phone-form-group').removeClass('d-none');
             $('.email-form-group').addClass('d-none');
+            document.querySelector(".phone-form-group input").setAttribute('name','email');
+            document.querySelector(".email-form-group input").setAttribute('name','email-none');
             isPhoneShown = true;
             $(el).html('{{ translate('Use Email Instead') }}');
         }

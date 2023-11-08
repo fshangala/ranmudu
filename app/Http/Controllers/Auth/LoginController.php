@@ -248,7 +248,6 @@ class LoginController extends Controller
             return $request->only($this->username(), 'password');
         } else {
             $phone = '+' . $request->get('country_code') . ltrim(str_replace(' ', '',$request->get('email')),'0');
-            //dd(['phone'=>$phone,'password'=>$request->get('password')]);
             return ['phone'=>$phone,'password'=>$request->get('password')];
         }
     }
@@ -274,7 +273,6 @@ class LoginController extends Controller
 
     protected function sendFailedLoginResponse(Request $request)
     {
-        die('failed');
         throw ValidationException::withMessages([
             $this->username() => [trans('auth.failed')],
         ]);
@@ -282,12 +280,6 @@ class LoginController extends Controller
 
     protected function attemptLogin(Request $request)
     {
-        /*$creds = $this->credentials($request);
-        if (array_key_exists('phone',$creds)) {
-            //$user = User::where('code',$creds['code'])->where('phone',$creds['phone'])->first();
-            $user = User::all();
-            dd($user);
-        }*/
         return $this->guard()->attempt(
             $this->credentials($request), $request->boolean('remember')
         );

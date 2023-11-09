@@ -271,20 +271,6 @@ class LoginController extends Controller
         }
     }
 
-    protected function sendFailedLoginResponse(Request $request)
-    {
-        throw ValidationException::withMessages([
-            $this->username() => [trans('auth.failed')],
-        ]);
-    }
-
-    protected function attemptLogin(Request $request)
-    {
-        return $this->guard()->attempt(
-            $this->credentials($request), $request->boolean('remember')
-        );
-    }
-
     /**
      * Create a new controller instance.
      *
